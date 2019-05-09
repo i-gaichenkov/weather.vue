@@ -271,7 +271,7 @@ form textarea {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
-  *zoom: 1; 
+  *zoom: 1;
 }
   .container:after {
     content: " ";
@@ -1237,6 +1237,7 @@ form textarea {
   overflow: hidden;
   border-radius: 10px;
   margin-bottom: 50px; 
+  margin-top: -150px;
   }
   
   .forecast-container .forecast {

@@ -1,8 +1,8 @@
 <template>
     <div class="hero">
         <div class="container">
-            <form action="#" class="find-location">
-                <input type="text" placeholder="Find your location..." />
+            <form @submit="selectCity" class="find-location">
+                <input type="text" v-model="cityName" placeholder="Find your location..." />
                 <input type="submit" value="Find" />
             </form>
         </div>
@@ -11,6 +11,18 @@
 
 <script>
 export default {
-    name: 'CityPicker'
+    name: 'CityPicker',
+    data() {
+        return {
+            cityName: ''
+        }
+    },
+    methods: {
+        selectCity(e) {
+            e.preventDefault();
+            this.$emit('city-selected', this.cityName);
+            this.cityName = '';
+        }
+    }
 }
 </script>

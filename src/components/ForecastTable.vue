@@ -2,15 +2,9 @@
     <div class="forecast-table">
         <div class="container">
             <div class="forecast-container">
-                <current-time-forecast v-bind:dayForecast="forecast.dailyForecasts[0]" v-bind:city="forecast.city"/>
-                <template v-for="time in forecast.dailyForecasts.slice(1, 7)">
-                    <time-forecast v-bind:key="time.dateTime" v-bind:forecast="time"/> 
-                </template>
-            </div>
-
-            <div class="forecast-container" v-for="(chunk, index) in splitArray(forecast.dailyForecasts.slice(7), 6)" :key="`chunk-${index}`">
-                <template v-for="time in chunk">
-                    <time-forecast v-bind:key="time.dateTime" v-bind:forecast="time"/> 
+                <current-forecast v-bind:currentWeather="forecast.currentWeather" v-bind:city="forecast.city"/>
+                <template v-for="time in forecast.dailyForecasts">
+                    <day-forecast v-bind:key="time.dateTime" v-bind:forecast="time"/> 
                 </template>
             </div>
         </div>
@@ -18,14 +12,14 @@
 </template>
 
 <script>
-import CurrentTimeForecast from './CurrentTimeForecast.vue'
-import TimeForecast from './TimeForecast.vue'
+import CurrentForecast from './CurrentForecast.vue'
+import DayForecast from './DayForecast.vue'
 
 export default {
     name: 'ForecastTable',
     components: {
-        CurrentTimeForecast,
-        TimeForecast
+        CurrentForecast,
+        DayForecast
     },
     props: [ "forecast" ],
     methods: {
