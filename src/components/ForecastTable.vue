@@ -3,8 +3,8 @@
         <div class="container">
             <div class="forecast-container">
                 <current-forecast v-bind:currentWeather="forecast.currentWeather" v-bind:city="forecast.city"/>
-                <template v-for="time in forecast.dailyForecasts">
-                    <day-forecast v-bind:key="time.dateTime" v-bind:forecast="time"/> 
+                <template v-for="day in forecast.dailyForecasts">
+                    <day-forecast v-bind:key="day.dateTime" v-bind:forecast="day"/> 
                 </template>
             </div>
         </div>
@@ -30,8 +30,6 @@ export default {
             for (var i = 0; i < chunksNumber; i++) {
                 result[i] = data.slice(i * chunkSize, (i + 1) * chunkSize);
             }
-// eslint-disable-next-line 
-            console.log(result);
             
             return result;
         }
